@@ -1,5 +1,27 @@
 .list{
-    background: rgb(100, 163, 199);
-    width: 100vw;
-    height: 100vw;
+    height: 100vh;
+    /* background-image: url("https://onlinepngtools.com/images/examples-onlinepngtools/desert.jpg"); */
+}
+input{
+    padding: 10px;
+    font-size: 1rem;
+    background: transparent;
+    width: 250px;
+    border-radius: 5px;
+    border: 2px solid blue;
+    color: rgb(4, 4, 71);
+}
+button{
+    padding: 10px;
+    font-size: 1rem;
+    background: blue;
+    margin: 10px;
+    border-radius: 5px;
+    border: 2px solid blue;
+    color:white;
+
+}
+button:hover{
+    background: rgb(2, 2, 109);
+    cursor: pointer;
 }

@@ -15,9 +15,11 @@ class App extends React.Component{
 
   return (
     <div className="ui-continer">
-      <h1>Todo list</h1>
-      <p>orgnize your times and list your metions</p>
- 
+      <div className="tittle">
+        <h1>Todo list</h1>
+        <p>orgnize your times and list your metions</p>
+        </div>
+    
       <Form  onSubmit={this.onaddtask}/>
       
     </div>

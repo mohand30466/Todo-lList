@@ -4,9 +4,16 @@
 
 .ui-continer{
   height: 100vh;
-  background: rgb(167, 167, 235);
+ background-image: url("https://img.pngio.com/ocean-waves-png-transparent-background-ocean-wave-png-water-waves-coloring-pages-png-920_358.png");
   display: flex;
+  background-repeat: no-repeat;
+  background-size: cover;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.tittle{
+  height: 20%;
+  color: rgb(6, 43, 100);
+  background-image: url("");
 }

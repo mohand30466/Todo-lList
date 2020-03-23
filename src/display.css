@@ -1,0 +1,18 @@
+ li{
+    padding: 10px;
+    font-size: 16px;
+    border: 2px #000000 solid;
+    width: 165px;
+    margin-top: 10px;
+    text-decoration: none;
+    background: paleturquoise;
+    color: rgb(24, 12, 12);
+    border-radius: 5px;
+    width: 250px;
+    list-style: none;
+    
+
+}
+.newlist ul {
+    padding: 0;
+}
