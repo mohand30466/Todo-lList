@@ -9,25 +9,28 @@ class Form extends React.Component {
     this.state={items:[]};
 
     this.ontaskSubmit = this.ontaskSubmit.bind(this)
+    // this.deleteItems=this.deleteItems.bind(this)
   }
    
 
     ontaskSubmit=(event)=>{
-      if (this.inputhandling !== " "){
+      if (this.state.term !== " "){
         var newItem ={
-          text: this.inputhandling.value,
+          text: this.state.term,
           Key:Date.now()
         }
       }
-       
-        // this.props.onSubmit(this.state.term)
-        this.setState((prevState)=>{
+        this.setState((e)=>{
           return{
-           items: prevState.items.concat(newItem)
+           items: e.items.concat(newItem)
           }
         });
-        this.inputhandling.value = " ";
-        console.log(this.state.items);
+
+        if(this.state.term == " "){
+          return;
+        }
+
+       
         event.preventDefault();
         
     
@@ -40,13 +43,14 @@ class Form extends React.Component {
         <div className="list">
         <div className="form">
           <form onSubmit={this.ontaskSubmit}>
-            <input type="text" placeholder="enter a task"
-             ref={(a)=>this.inputhandling= a} 
+            <input type="text" 
+             value={this.state.term}
              onChange={(e)=> this.setState({term: e.target.value})} />
             <button type="submit">add</button>
           </form>
         </div>
         <Display task={this.state.items}/>
+         
       </div>
     )
     }
