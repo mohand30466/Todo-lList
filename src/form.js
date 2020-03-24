@@ -1,59 +1,66 @@
-import React, { Component } from 'react';
-import Display from './display';
-import"./Form.css"
+import React, { Component } from "react";
+import Display from "./display";
+import "./Form.css";
 
 class Form extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
-    this.state={items:[]};
+    this.state = { items: [] };
 
-    this.ontaskSubmit = this.ontaskSubmit.bind(this)
-    // this.deleteItems=this.deleteItems.bind(this)
+    this.ontaskSubmit = this.ontaskSubmit.bind(this);
+    this.deleteItem = this.deleteItem.bind(this)
   }
+
+  ontaskSubmit = event => {
+    if (this.state.items !== " ") {
+      var newItem = {
+        text: this.state.term,
+        key: Date.now()
+      };
+    }
    
-
-    ontaskSubmit=(event)=>{
-      if (this.state.term !== " "){
-        var newItem ={
-          text: this.state.term,
-          Key:Date.now()
-        }
-      }
-        this.setState((e)=>{
-          return{
-           items: e.items.concat(newItem)
-          }
-        });
-
-        if(this.state.term == " "){
-          return;
-        }
-
-       
-        event.preventDefault();
-        
     
+    this.setState(e => {
+      return {
+        items: e.items.concat(newItem)
+      };
+    });
+
+    if (this.state.items == " ") {
+      return " ";
     }
 
+    event.preventDefault();
 
-    render(){
+  };
   
-    return(
-        <div className="list">
+  deleteItem(Key){
+   
+    var filterItem = this.state.items.filter(function(item){
+      return(item.key !== Key)
+    });
+    this.setState({items:filterItem})
+   
+   
+  }
+
+  render() {
+    return (
+      <div className="list">
         <div className="form">
           <form onSubmit={this.ontaskSubmit}>
-            <input type="text" 
-             value={this.state.term}
-             onChange={(e)=> this.setState({term: e.target.value})} />
+            <input
+              type="text"
+              value={this.state.term}
+              onChange={e => this.setState({ term: e.target.value })}
+            />
             <button type="submit">add</button>
           </form>
         </div>
-        <Display task={this.state.items}/>
-         
+        <Display task={this.state.items} delete={this.deleteItem} />
       </div>
-    )
-    }
-
+    );
+  }
 }
 export default Form;

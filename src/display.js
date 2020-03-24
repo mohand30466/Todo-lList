@@ -9,11 +9,16 @@ class Dsiplay extends React.Component {
 
   createTask(items) {
     return (
-      <li key={items.key}>
+      <li onClick = {() =>this.delete(items.key)} key={items.key}>
         {items.text}
       </li>
    
     );
+  }
+  delete(key){
+      
+      this.props.delete(key)
+      console.log("this is my new " + key);
   }
 
   render() {
@@ -22,7 +27,9 @@ class Dsiplay extends React.Component {
 
     return (
       <div className="newlist">
-        <ul>{listTask}</ul>
+        <ul>
+            {listTask}
+        </ul>
       </div>
     );
   }
