@@ -38,6 +38,12 @@ class Form extends React.Component {
     this.setState({ items: filterItem });
   }
 
+  upDateItem = (newItem) =>{
+     console.log(this.state.items.text);
+    
+     }
+  
+
   render() {
     return (
       <div className="list">
@@ -53,7 +59,7 @@ class Form extends React.Component {
           </form> 
           </div>
       
-         <Display task={this.state.items} delete={this.deleteItem} />
+         <Display task={this.state.items} delete={this.deleteItem} upDate={this.upDateItem}/>
       </div>
     );
   }

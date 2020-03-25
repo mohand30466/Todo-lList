@@ -14,8 +14,8 @@ const Dsiplay = (props) => {
                 <div>
               <li  key={items.key}>{items.text} 
               </li>
-              {/* <BtnPrimary name="Remove"/> */}
               <button onClick = {() =>props.delete(items.key)}>remove</button>
+              <button onClick = {() =>props.upDate(items.text)}>update</button>
               </div>
               )
             })}
