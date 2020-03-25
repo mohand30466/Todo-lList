@@ -7,9 +7,7 @@ class Form extends React.Component {
     super(props);
 
     this.state = { items: [] };
-
-    this.ontaskSubmit = this.ontaskSubmit.bind(this);
-    this.deleteItem = this.deleteItem.bind(this)
+    
   }
 
   ontaskSubmit = event => {
@@ -19,8 +17,7 @@ class Form extends React.Component {
         key: Date.now()
       };
     }
-   
-    
+
     this.setState(e => {
       return {
         items: e.items.concat(newItem)
@@ -32,17 +29,13 @@ class Form extends React.Component {
     }
 
     event.preventDefault();
-
   };
-  
-  deleteItem(Key){
-   
-    var filterItem = this.state.items.filter(function(item){
-      return(item.key !== Key)
+
+  deleteItem =(Key)=> {
+    const  filterItem = this.state.items.filter((item)=> {
+      return item.key !== Key;
     });
-    this.setState({items:filterItem})
-   
-   
+    this.setState({ items: filterItem });
   }
 
   render() {
@@ -56,9 +49,11 @@ class Form extends React.Component {
               onChange={e => this.setState({ term: e.target.value })}
             />
             <button type="submit">add</button>
-          </form>
-        </div>
-        <Display task={this.state.items} delete={this.deleteItem} />
+          
+          </form> 
+          </div>
+      
+         <Display task={this.state.items} delete={this.deleteItem} />
       </div>
     );
   }

@@ -1,18 +1,20 @@
 import React from "react";
 import "./App.css";
-import Form from "./form";
+import Form from "./component/form";
+import Title from './component/Title'
+// import Display from './component/display'
 
 class App extends React.Component {
-  onaddtask(term) {}
+  constructor(props){
+    super(props)
+    this.state = { items: [] };
+  }
+
   render() {
     return (
       <div className="ui-continer">
-        <div className="tittle">
-          <h1>Todo list</h1>
-          <p>orgnize your times and list your metions</p>
-        </div>
-
-        <Form onSubmit={this.onaddtask} />
+       <Title/>
+        <Form />
       </div>
     );
   }
