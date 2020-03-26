@@ -1,20 +1,63 @@
 import React from "react";
 import "./App.css";
 import Form from "./component/form";
-import Title from './component/Title'
-// import Display from './component/display'
+import Display from "./component/Display";
 
 class App extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = { items: [] };
-  }
+  state = { items: [], term: " " };
+
+  onChangeItem = e => {
+    console.log(this.state.term);
+    this.setState({ term: e.target.value });
+  };
+
+  ontaskSubmit = e => {
+    e.preventDefault();
+    if (this.state.items !== " ") {
+      var newItem = {
+        text: this.state.term,
+        key: Date.now()
+      };
+    }
+    this.setState(e => {
+      return {
+        items: e.items.concat(newItem)
+      };
+    });
+  };
+  deleteItem = Key => {
+    const filterItem = this.state.items.filter(item => {
+      return item.key !== Key;
+    });
+    this.setState({ items: filterItem });
+  };
+  upDateItem = e => {
+    const todolist = [...this.state.items];
+    const index = this.state.items.findIndex(item => {
+      return (e.key = item.key);
+    });
+    todolist[index].text = this.state.term;
+    this.setState({ items: todolist });
+  };
 
   render() {
     return (
       <div className="ui-continer">
-       <Title/>
-        <Form />
+        <div className="tittle">
+          <h1>Todo list</h1>
+          <p>orgnize your times and list your metions</p>
+        </div>
+
+        <Form
+          value={this.state.term}
+          onChange={this.onChangeItem}
+          onSubmit={this.ontaskSubmit}
+        />
+        <Display
+          task={this.state.items}
+          delete={this.deleteItem}
+          upDate={this.upDateItem}
+        />
       </div>
     );
   }
