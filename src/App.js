@@ -7,13 +7,12 @@ class App extends React.Component {
   state = { items: [], term: " " };
 
   onChangeItem = e => {
-    console.log(this.state.term);
     this.setState({ term: e.target.value });
   };
 
   ontaskSubmit = e => {
     e.preventDefault();
-    if (this.state.items !== " ") {
+    if (this.state.items !== "") {
       var newItem = {
         text: this.state.term,
         key: Date.now()
@@ -24,7 +23,9 @@ class App extends React.Component {
         items: e.items.concat(newItem)
       };
     });
+    this.setState({ term: "" });
   };
+
   deleteItem = Key => {
     const filterItem = this.state.items.filter(item => {
       return item.key !== Key;
@@ -38,6 +39,7 @@ class App extends React.Component {
     });
     todolist[index].text = this.state.term;
     this.setState({ items: todolist });
+    this.setState({ term: "" });
   };
 
   render() {
